@@ -1,0 +1,70 @@
+{
+  "name": "create-file-with-template",
+  "displayName": "Create File With-Template",
+  "description": "Generate template code when file is created.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onFileSystem:file"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+  },
+  "configuration": {
+    "title": "Create File",
+    "properties": {
+      "CreateFile.templateDir": {
+        "type": "string",
+        "description": "templateDir",
+        "default": ""
+      },
+      "CreateFile.template": {
+        "type": "object",
+        "description": "template config"
+      },
+      "CreateFile.excludes": {
+        "type": "array",
+        "description": "template excludes",
+        "default": [
+          "^node_modules",
+          "^."
+        ]
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.87.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9",
+    "copy-webpack-plugin": "^12.0.2",
+    "eslint": "^8.56.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "mustache": "^4.2.0"
+  }
+}
