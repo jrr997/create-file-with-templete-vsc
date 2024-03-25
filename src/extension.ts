@@ -3,7 +3,7 @@ import { handleFile } from './handleFile';
 
 const defaultExcludes = [
   "^node_modules",
-  "^."
+  "^\\."
 ];
 
 export function activate(context: vscode.ExtensionContext) {
