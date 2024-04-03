@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface Props {
+interface <%= FileName %>Props {
 
 };
 
-const {{ FileName }} = (props: Props) => {
+const <%= FileName %> = (props: <%= FileName %>Props) => {
 
 };
 
-export default {{ FileName }};
+export default <%= FileName %>;

@@ -13,8 +13,7 @@
     "onFileSystem:file"
   ],
   "main": "./dist/extension.js",
-  "contributes": {
-  },
+  "contributes": {},
   "configuration": {
     "title": "Create File",
     "properties": {
@@ -65,6 +64,6 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "mustache": "^4.2.0"
+    "ejs": "^3.1.9"
   }
 }

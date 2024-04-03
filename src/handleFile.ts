@@ -2,8 +2,7 @@ import * as vscode from 'vscode';
 import { IExtraInfo, ITemplates } from './types';
 const path = require('path');
 const fs = require('fs');
-const Mustache = require('mustache');
-
+const ejs = require('ejs');
 
 export const handleFile = (uri: vscode.Uri, { ext, fileName, templateDir, templateConfig }: IExtraInfo) => {
   const normalizedPath = path.normalize(uri.fsPath);
@@ -16,7 +15,8 @@ export const handleFile = (uri: vscode.Uri, { ext, fileName, templateDir, templa
 
   const content = fs.readFileSync(tplPath, 'utf-8');
   const edit = new vscode.WorkspaceEdit();
-  edit.insert(uri, new vscode.Position(0, 0), Mustache.render(content, { fileName, ext, normalizedPath, FileName: fileName!.charAt(0).toUpperCase() + fileName.slice(1)}));
+  const paths = normalizedPath.split(path.sep);
+  edit.insert(uri, new vscode.Position(0, 0), ejs.render(content, { paths, fileName, ext, normalizedPath, FileName: fileName!.charAt(0).toUpperCase() + fileName.slice(1)}));
 
   vscode.workspace.applyEdit(edit);
 };
@@ -27,6 +27,7 @@ class TemplateManager {
   private internalTemplates: ITemplates = {
     ['tsx.tpl']: ["\.tsx$"],
     ['jsx.tpl']: ["\.jsx$"],
+    ['js.tpl']: ["\.[(js)(ts)]$"],
   };
   private userTemplates: ITemplates = {};
   private templateDir: string = '';

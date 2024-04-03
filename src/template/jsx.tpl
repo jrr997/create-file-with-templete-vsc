@@ -1,7 +1,7 @@
 import React from 'react';
 
-const {{ FileName }} = (props) => {
+const <%= FileName %> = (props) => {
 
 };
 
-export default {{ FileName }};
+export default <%= FileName %>;
