@@ -13,26 +13,27 @@
     "onFileSystem:file"
   ],
   "main": "./dist/extension.js",
-  "contributes": {},
-  "configuration": {
-    "title": "Create File",
-    "properties": {
-      "CreateFile.templateDir": {
-        "type": "string",
-        "description": "templateDir",
-        "default": ""
-      },
-      "CreateFile.template": {
-        "type": "object",
-        "description": "template config"
-      },
-      "CreateFile.excludes": {
-        "type": "array",
-        "description": "template excludes",
-        "default": [
-          "^node_modules",
-          "^."
-        ]
+  "contributes": {
+    "configuration": {
+      "title": "Create File",
+      "properties": {
+        "CreateFile.templateDir": {
+          "type": "string",
+          "description": "templateDir",
+          "default": ""
+        },
+        "CreateFile.template": {
+          "type": "object",
+          "description": "template config"
+        },
+        "CreateFile.excludes": {
+          "type": "array",
+          "description": "template excludes",
+          "default": [
+            "^node_modules",
+            "^\\."
+          ]
+        }
       }
     }
   },
