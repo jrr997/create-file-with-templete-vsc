@@ -1,7 +1,7 @@
 {
-  "name": "create-file-with-template",
-  "displayName": "Create File With-Template",
-  "description": "Generate template code when file is created.",
+  "name": "create-template-file",
+  "displayName": "Create Template File",
+  "description": "create file with template.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.87.0"
@@ -15,18 +15,18 @@
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Create File",
+      "title": "Create Template File",
       "properties": {
-        "CreateFile.templateDir": {
+        "createTemplateFile.templateDir": {
           "type": "string",
           "description": "templateDir",
           "default": ""
         },
-        "CreateFile.template": {
+        "createTemplateFile.template": {
           "type": "object",
           "description": "template config"
         },
-        "CreateFile.excludes": {
+        "createTemplateFile.excludes": {
           "type": "array",
           "description": "template excludes",
           "default": [

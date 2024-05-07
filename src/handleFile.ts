@@ -36,9 +36,9 @@ export const handleFile = (
 
 class TemplateManager {
   private internalTemplates: ITemplates = {
-    ['tsx.tpl']: ['(.tsx)$'],
-    ['jsx.tpl']: ['(.jsx)$'],
-    ['js.tpl']: ['(.[(js)(ts)])$'],
+    ['tsx.tpl']: [`\.tsx$`],
+    ['jsx.tpl']: [`\.jsx$`],
+    ['js.tpl']: [`\.(js|ts)$`],
   };
   private userTemplates: ITemplates = {};
   private templateDir: string = '';

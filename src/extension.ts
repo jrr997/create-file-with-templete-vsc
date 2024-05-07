@@ -4,7 +4,7 @@ import { handleFile } from './handleFile';
 const defaultExcludes = ['^node_modules', '^\\.'];
 
 export function activate(context: vscode.ExtensionContext) {
-  const config = vscode.workspace.getConfiguration('CreateFile');
+  const config = vscode.workspace.getConfiguration('createTemplateFile');
   let templateDir = config.get('templateDir') as string;
   let templateConfig = config.get('template') as { [key: string]: string[] };
   let excludes = config.get('excludes') as string[];
@@ -46,23 +46,23 @@ export function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(
       vscode.workspace.onDidChangeConfiguration((e) => {
-        if (e.affectsConfiguration('CreateFile.templateDir')) {
+        if (e.affectsConfiguration('createTemplateFile.templateDir')) {
           const newTemplateDir = vscode.workspace
-            .getConfiguration('CreateFile')
+            .getConfiguration('createTemplateFile')
             .get('templateDir') as string;
           if (newTemplateDir !== templateDir) {
             templateDir = newTemplateDir;
           }
         }
-        if (e.affectsConfiguration('CreateFile.template')) {
+        if (e.affectsConfiguration('createTemplateFile.template')) {
           const newTemplateConfig = vscode.workspace
-            .getConfiguration('CreateFile')
+            .getConfiguration('createTemplateFile')
             .get('template') as { [key: string]: string[] };
           templateConfig = newTemplateConfig;
         }
-        if (e.affectsConfiguration('CreateFile.excludes')) {
+        if (e.affectsConfiguration('createTemplateFile.excludes')) {
           const newExcludes = vscode.workspace
-            .getConfiguration('CreateFile')
+            .getConfiguration('createTemplateFile')
             .get('excludes') as string[];
           excludes = newExcludes;
         }
